@@ -5,7 +5,7 @@ const reactLogo = require('./../assets/img/react_logo.svg');
 
 export interface AppProps {}
 
-export default class App extends React.Component<AppProps, undefined> {
+export default class App extends React.Component<AppProps> {
   render() {
     return (
       <div className="app">
