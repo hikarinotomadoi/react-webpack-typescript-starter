@@ -29,7 +29,19 @@
     "start": "yarn run start-dev",
     "start-dev": "webpack-dev-server --config=configs/webpack/dev.js",
     "start-prod": "yarn run build && node express.js",
-    "test": "jest --watch --coverage --config=configs/jest.json"
+    "test": "jest --watch --coverage --config=configs/jest.json",
+    "fmt": "prettier --write --config ./.prettierrc.yml src/*.{tsx,ts}"
+  },
+  "husky": {
+    "hooks": {
+      "precommit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{tsx,ts}": [
+      "prettier --write --config ./.prettierrc.yml",
+      "git add"
+    ]
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
@@ -46,9 +58,11 @@
     "express": "^4.16.4",
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^1.1.4",
     "image-webpack-loader": "^4.5.0",
     "jest": "^23.6.0",
     "node-sass": "^4.10.0",
+    "prettier": "1.15.2",
     "react": "^16.6.3",
     "react-addons-test-utils": "^15.6.2",
     "react-dom": "^16.6.3",
@@ -56,6 +70,9 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.16.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "tslint-react": "^3.6.0",
     "typescript": "^3.1.6",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.25.1",
@@ -63,6 +80,5 @@
     "webpack-dev-middleware": "^3.4.0",
     "webpack-dev-server": "^3.1.10",
     "webpack-merge": "^4.1.4"
-  },
-  "dependencies": {}
+  }
 }
